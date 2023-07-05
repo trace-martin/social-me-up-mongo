@@ -16,7 +16,9 @@ mongoose.connect('mongodb://localhost/social_network_db', {
 
 // Define routes
 app.use('/api/users', require('./routes/userRoutes'));
-app.use('/api/thoughts', require('./routes/thoughtRoutes'));
+app.use('/api/thought', require('./routes/thoughtRoutes'));
+
+mongoose.set('debug', true);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
