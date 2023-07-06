@@ -10,13 +10,11 @@ app.use(express.urlencoded({ extended: true }));
 mongoose.connect('mongodb://localhost/social_network_db', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false
 });
 
 // Define routes
-app.use('/api/users', require('./routes/userRoutes'));
-app.use('/api/thought', require('./routes/thoughtRoutes'));
+app.use('/api/users', require('./routes/api/userRoutes'));
+app.use('/api/thought', require('./routes/api/thoughtRoutes'));
 
 mongoose.set('debug', true);
 
