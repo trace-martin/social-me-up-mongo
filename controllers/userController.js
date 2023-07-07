@@ -4,10 +4,7 @@ const userController = {
 
   getAllUsers(req, res) {
     User.find()
-      .populate({
-        path: 'thoughts',
-        select: ('-__v')
-      })
+      .populate('thoughts')
       .populate('friends')
       .then((users) => {
         res.json(users);
@@ -92,7 +89,7 @@ const userController = {
       .catch((err) => {
         res.status(400).json(err);
       });
-    },
+  },
 
   removeFriend(req, res) {
     User.findByIdAndUpdate(
@@ -109,7 +106,7 @@ const userController = {
       .catch((err) => {
         res.status(400).json(err);
       });
-    },
+  },
 };
 
 module.exports = userController;
