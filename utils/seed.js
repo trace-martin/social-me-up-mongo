@@ -34,17 +34,39 @@ const thoughts = [
   {
     thoughtText: 'Just had a great workout!',
     username: 'johnsmith',
-    reactions: []
+    reactions: 
+    [
+      {
+        reactionBody: 'This is a reaction!',
+        username: 'janedoe',
+      },
+      {
+        reactionBody: 'Glad to hear that!',
+        username: 'mikejohnson',
+      },
+    ]
   },
   {
     thoughtText: "Excited for the weekend!",
     username: "janedoe",
-    reactions: []
+    reactions: 
+    [
+      {
+        reactionBody: 'Me too!',
+        username: 'johnsmith',
+      },
+    ]
   },
   {
     thoughtText: "Enjoying a beautiful day at the beach.",
     username: "mikejohnson",
-    reactions: []
+    reactions: 
+    [
+      {
+        reactionBody: 'Sounds wonderful!',
+        username: 'janedoe',
+      },
+    ]
   }
 ];
 

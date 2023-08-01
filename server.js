@@ -12,9 +12,6 @@ mongoose.connect('mongodb://localhost/social_network_db', {
   useUnifiedTopology: true,
 });
 
-// Define routes
-// app.use('/api/users', require('./routes/api/userRoutes'));
-// app.use('/api/thought', require('./routes/api/thoughtRoutes'));
 app.use(require('./routes'));
 
 mongoose.set('debug', true);

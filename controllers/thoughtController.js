@@ -1,4 +1,5 @@
-const { Thought, User } = require('../models');
+const { Thought, User, Reactions } = require('../models');
+
 
 const thoughtController = {
     getAllThoughts(req, res) {
@@ -83,20 +84,27 @@ const thoughtController = {
     },
 
     createReaction(req, res) {
+        const { reactionBody, username } = req.body;
+      
+        if (!reactionBody || !username) {
+          return res.status(400).json({ message: 'Reaction body and username are required' });
+        }
+      
         Thought.findByIdAndUpdate(
-            req.params.id,
-            { $push: { reactions: req.body }},
-            {new: true }
+          req.params.id,
+          { $push: { reactions: { reactionBody, username } } },
+          { new: true }
         )
         .then((thought) => {
-            if(!user) {
-                return res.status(404).json({ message: ' Thought not found' });
+            if (!thought) {
+                return res.status(404).json({ message: 'Thought not found' });
             }
-            res.json({ message: 'Reaction added successfully', thought });
-        })
-        .catch((err) => {
-            res.status(400).json(err);
-        });
+                res.json({ message: 'Reaction added successfully', thought });
+            }).catch((err) => {
+                res.status(400).json(err);
+                console.log(err)
+            }
+        );
     },
 
     deleteReaction(req, res) {
@@ -113,6 +121,7 @@ const thoughtController = {
         })
         .catch((err) => {
             res.status(400).json(err);
+            console.log(err)
         });
     },
 };
