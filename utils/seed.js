@@ -11,20 +11,62 @@ mongoose.connect('mongodb://localhost/social_network_db', {
 // Define seed data
 const users = [
   {
-    username: 'johnsmith',
-    email: 'johnsmith@example.com',
+    username: 'DarthSidious',
+    email: 'darthsidious@sith.com',
     thoughts: [],
     friends: []
   },
   {
-    username: "janedoe",
-    email: "janedoe@example.com",
+    username: 'darthVader',
+    email: 'darthvader@sith.com',
     thoughts: [],
     friends: []
   },
   {
-    username: "mikejohnson",
-    email: "mikejohnson@example.com",
+    username: 'Darth-Maul',
+    email: 'darthmaul@sith.com',
+    thoughts: [],
+    friends: []
+  },
+  {
+    username: 'countdOOku',
+    email: 'countdooku@sith.com',
+    thoughts: [],
+    friends: []
+  },
+  {
+    username: 'darthrevan',
+    email: 'darthrevan@sith.com',
+    thoughts: [],
+    friends: []
+  },
+  {
+    username: 'AsajjV',
+    email: 'asajjventress@sith.com',
+    thoughts: [],
+    friends: []
+  },
+  {
+    username: 'kyloren',
+    email: 'kyloren@sith.com',
+    thoughts: [],
+    friends: []
+  },
+  {
+    username: 'DarthSidious',
+    email: 'darthsidious@sith.com',
+    thoughts: [],
+    friends: []
+  },
+  {
+    username: 'snoke',
+    email: 'snoke@sith.com',
+    thoughts: [],
+    friends: []
+  },
+  {
+    username: 'darthbane',
+    email: 'darthbane@sith.com',
     thoughts: [],
     friends: []
   }
@@ -32,42 +74,49 @@ const users = [
 
 const thoughts = [
   {
-    thoughtText: 'Just had a great workout!',
-    username: 'johnsmith',
-    reactions: 
-    [
+    thoughtText: 'The dark side is strong!',
+    username: 'DarthSidious',
+    reactions: [
       {
-        reactionBody: 'This is a reaction!',
-        username: 'janedoe',
+        reactionBody: 'Indeed it is!',
+        username: 'darthVader',
       },
       {
-        reactionBody: 'Glad to hear that!',
-        username: 'mikejohnson',
-      },
-    ]
-  },
-  {
-    thoughtText: "Excited for the weekend!",
-    username: "janedoe",
-    reactions: 
-    [
-      {
-        reactionBody: 'Me too!',
-        username: 'johnsmith',
+        reactionBody: 'The power of the Sith!',
+        username: 'Darth-Maul',
       },
     ]
   },
   {
-    thoughtText: "Enjoying a beautiful day at the beach.",
-    username: "mikejohnson",
-    reactions: 
-    [
+    thoughtText: 'The Jedi must be destroyed!',
+    username: 'darthVader',
+    reactions: [
       {
-        reactionBody: 'Sounds wonderful!',
-        username: 'janedoe',
+        reactionBody: 'The Sith will prevail!',
+        username: 'DarthSidious',
       },
     ]
-  }
+  },
+  {
+    thoughtText: 'My double-bladed lightsaber is unmatched!',
+    username: 'Darth-Maul',
+    reactions: [
+      {
+        reactionBody: 'A formidable weapon!',
+        username: 'DarthVader',
+      },
+    ]
+  },
+  {
+    thoughtText: 'My double-bladed lightsaber is unmatched!',
+    username: 'Darth-Maul',
+    reactions: [
+      {
+        reactionBody: 'A formidable weapon!',
+        username: 'DarthVader',
+      },
+    ]
+  },
 ];
 
 const seedData = async () => {
