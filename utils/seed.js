@@ -53,12 +53,6 @@ const users = [
     friends: []
   },
   {
-    username: 'DarthSidious',
-    email: 'darthsidious@sith.com',
-    thoughts: [],
-    friends: []
-  },
-  {
     username: 'snoke',
     email: 'snoke@sith.com',
     thoughts: [],

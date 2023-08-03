@@ -1,66 +1,42 @@
-const { Schema, mongoose } = require('mongoose');
-const { dateFormat } =require('../utils/date')
+const mongoose = require('mongoose');
+const { Schema, model } = mongoose;
 
-const ReactionSchema = new Schema(
-    {
-      reactionId: {
-        type: Schema.Types.ObjectId,
-        default: () => new Types.ObjectId()
-      },
-      reactionBody: {
-        type: String,
-        required: true,
-        maxLength: 280
-      },
-      username: {
-        type: String,
-        required: true
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-        get: () => dateFormat()
-      }
+const reactionSchema = new Schema(
+  {
+    reactionBody: {
+      type: String,
+      required: true,
+      maxLength: 280,
     },
-    {
-      toJSON: {
-        getters: true
-      }
-    }
+    username: {
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
 );
 
-const ThoughtSchema = new Schema(
-    {
-        thoughtText: {
-            type: String,
-            required: true,
-            minLength: 1,
-            maxLength: 280
-        },
-        createdAt: {
-            type: Date,
-            default: Date.now,
-            get: () => dateFormat()
-        },
-        username: {
-            type: String,
-            required: true
-        },
-        reactions: [ReactionSchema]
+const thoughtSchema = new Schema(
+  {
+    thoughtText: {
+      type: String,
+      required: true,
+      minLength: 1,
+      maxLength: 280,
     },
-    { 
-    toJSON: {
-        virtuals: true,
-        getters: true,
+    username: {
+      type: String,
+      required: true,
     },
-    id: false
-    }
+    reactions: [reactionSchema],
+  },
+  {
+    timestamps: true,
+  }
 );
 
-ThoughtSchema.virtual('reactionCount').get(function () {
-    return this.reactions.length;
-});
-
-const Thought = mongoose.model('Thought', ThoughtSchema)
+const Thought = model('Thought', thoughtSchema);
 
 module.exports = Thought;
