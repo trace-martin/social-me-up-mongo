@@ -1,4 +1,4 @@
-const { Thought, User, Reactions } = require('../models');
+const { Thought, User } = require('../models');
 
 
 const thoughtController = {
@@ -38,7 +38,7 @@ const thoughtController = {
         })
         .then((user) => {
             if (!user) {
-                return res.status(404).json({ message: 'User not found' });
+                return res.status(404).json({ message: 'Thought created successfully' });
             }
             res.json({ message: 'Thought created successfully', user });
         })
@@ -74,7 +74,7 @@ const thoughtController = {
         })
         .then((user) => {
             if(!user) {
-                return res.status(404).json({ message: ' User not found' });
+                return res.status(404).json({ message: ' Thought deleted successfully' });
             }
             res.json({ message: 'Thought deleted successfully', user });
         })
@@ -108,9 +108,9 @@ const thoughtController = {
     },
 
     deleteReaction(req, res) {
-        Thought.findByIdAndUpdate(
+        Thought.findByIdAndDelete(
             req.params.id,
-            { $pull: { reactions: { reactionId: req.params.reactionId }}},
+            { $pull: { reactions: { _id: req.params.reactionId }}},
             { new: true }
         )
         .then((thought) => {

@@ -74,12 +74,12 @@ const userController = {
       });
     },
 
-   addFriend(req, res) {
+  addFriend(req, res) {
     const { userId, friendId } = req.params;
 
     User.findByIdAndUpdate(
       userId,
-      { $addToSet: { friends: friendId } },
+      { $addToSet: { friends: friendId }, $inc: { friendCount: 1 } },
       { new: true }
     )
       .populate('friends')
@@ -94,25 +94,6 @@ const userController = {
       });
   },
 
-  removeFriend(req, res) {
-    const { userId, friendId } = req.params;
-
-    User.findByIdAndUpdate(
-      userId,
-      { $pull: { friends: friendId } },
-      { new: true }
-    )
-      .populate('friends')
-      .then((user) => {
-        if (!user) {
-          return res.status(404).json({ message: 'User not found' });
-        }
-        res.json({ message: 'Friend removed successfully', user });
-      })
-      .catch((err) => {
-        res.status(400).json(err);
-      });
-  },
 
   removeFriend(req, res) {
     User.findByIdAndUpdate(
